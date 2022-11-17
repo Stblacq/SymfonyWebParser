@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}News{% endblock %}
+
+{% block body %}
+    <style>
+        .wrapper {
+            margin: 1em auto;
+            width: 95%;
+        }
+        .pagination span{
+            font-family: Montserrat, sans-serif;
+            font-size: 16px;
+            color:  #232323;
+            margin-right: 3px;
+            border: none;
+            border-radius: 0px;
+            width: 34px;
+            height: 34px;
+            display:  flex;
+            flex-direction:  column;
+            justify-content:  center;
+            align-items: center;
+            outline: none!important;
+            box-shadow: none;
+            padding: 10px;
+            }
+    </style>
+
+    <div class="wrapper">
+        <h1>News From Around The World</h1>
+        <h1>Articles : ({{ articles.getTotalItemCount }})</h1>
+        <div class="container">
+        {% for article in articles %}
+            <div class="row">
+            <div class="col">
+                <img src="{{ article.picture}}" class="img-thumbnail" style="width:500px;height:300px;" alt="Post Image" />
+            </div>
+                <div class="col">
+                    <div class="row">
+                        <h2>{{ article.title }}</h2>
+                        {{ article.description}}
+                </>
+        
+                </div>
+                
+            </div>
+        {% endfor %}
+        <nav aria-label="Page navigation example">
+  <ul class="pagination">
+    {{ knp_pagination_render(articles) }}
+  </ul>
+</nav>
+           
+        </div>
+    </div>
+{% endblock %}
