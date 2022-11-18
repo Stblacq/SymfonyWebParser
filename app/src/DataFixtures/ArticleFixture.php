@@ -32,8 +32,8 @@ class ArticleFixture extends Fixture
 
     private function getArticle() {
         $article= new Article();
-        $article->setTitle($this->faker->string(20));
-        $article->setDescription($this->faker->sentence(200));
+        $article->setTitle($this->faker->sentence(10));
+        $article->setDescription($this->faker->sentence(20));
         $article->setPicture($this->faker->imageUrl(640, 480, 'animals', true));
         $article->setDateAdded($this->get_random_date());
         $article->setDateUpdated($this->get_random_date());

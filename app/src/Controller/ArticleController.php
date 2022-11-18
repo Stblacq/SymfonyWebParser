@@ -15,10 +15,12 @@ use App\Command\GetArticleCommand;
 class ArticleController extends AbstractController
 {
     
-    #[Route('/articles', name: 'app_article')]
+    #[Route('/', name: 'app_article')]
     public function index(Request $request,ArticleRepository 
     $articleRepository,PaginatorInterface $paginator): Response
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
         $articles = $articleRepository->findAll();
         $articles = $paginator->paginate(
             $articles,

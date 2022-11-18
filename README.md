@@ -25,6 +25,9 @@
 
 
 ## Parse Data From RabbitMQ to DB
-``symfony console app:parse-articles``
+``symfony console parse-articles``
 
 
+## Default Credentials
+  `` Password : $ymf0ny  
+     Email : superadmin@test.com ``

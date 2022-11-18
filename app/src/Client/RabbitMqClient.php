@@ -48,7 +48,7 @@ class RabbitMqClient
         $channel->queue_declare($channelName, false, false, false, false);
 
         $channel->basic_consume($channelName, '', false, true, false, false, $callback);
-        echo ">>>>>>>>>>>>>>>>>>>";
+        
         while ($channel->is_consuming()) {
             $channel->wait();
         }

@@ -2,8 +2,6 @@
 namespace App\Client;
 
 
-
-
 class WebScrapper
 {
 

@@ -12,6 +12,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use App\Client\RabbitMqClient;
 use App\Client\WebScrapper;
 use App\Command\GetArticleCommand;
+use Symfony\Component\DomCrawler\Crawler;
 
 
 #[AsCommand(
@@ -45,15 +46,14 @@ class ParseArticlesCommand extends Command
 
     private function parseHtml($html)
     {
-        $articles = WebScrapper::getArticlesFromHTML($html);
-        var_dump($articles->item(0)->lastChild);
 
-        echo "<<<<<<<<<<<<<<<<<<<<<<<<<<<<";
-        // echo ' [x] Received ', strlen($html), "\n";
-        // echo "<<<<<<<<<<<<<<<<<<<<<<<<<<<<".count($articles);
-        // // foreach ($articles as $article) {
-        // var_dump($articles[0]);
-        // }
+        $crawler = new Crawler($html);
+
+        $articles = $crawler->filter('body > div.lenta-item')
+        ->each(function (Crawler $node, $i) { ## TODO CONVERT HTML TO ARTICLES
+
+        });
+       
     }
 
 }
